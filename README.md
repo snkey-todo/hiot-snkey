@@ -52,6 +52,16 @@ Then we need to new a file named 'jdbc.properties', its main contents as followi
     username=root
     password=admin888
 
+### JOSN Support
+
+    //json
+        compile 'com.alibaba:fastjson:1.1.41'
+        compile "net.sf.json-lib:json-lib:2.3:jdk15"
+        compile 'org.codehaus.jackson:jackson-core-asl:1.9.12'
+        compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.12'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.3'
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
+
 ## Spring Data Redis
 
 When we need to use redis in our project, there are six steps.
@@ -113,6 +123,6 @@ When we need to use redis in our project, there are six steps.
      redis.boundValueOps(UUId).set(tokenValue, Constant.TOKEN_EXPIRES_HOUR, TimeUnit.HOURS); 
      redis.boundValueOps(model.getUUId()).expire(Constant.TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
     
-    
+
       
     
