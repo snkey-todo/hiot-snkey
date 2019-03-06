@@ -29,5 +29,3 @@ out/
 .gradle/
 .idea/
 
-#
-*.xml
