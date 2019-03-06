@@ -1,0 +1,66 @@
+group 'com.snkey.hiot'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+/*
+*使用UTF-8编码
+* */
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    //tomcat
+    compile 'org.apache.tomcat:tomcat-servlet-api:8.0.24'
+    //spring与springweb
+    compile 'org.springframework:spring-aop:4.2.4.RELEASE'
+    compile 'org.springframework:spring-context:4.2.4.RELEASE'
+    compile 'org.springframework:spring-beans:4.2.4.RELEASE'
+    compile 'org.springframework:spring-web:4.2.4.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.4.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.4.RELEASE'
+    compile 'org.aspectj:aspectjweaver:1.8.6'
+    //导入Mysql数据库链接jar包
+    compile 'mysql:mysql-connector-java:5.1.36'
+    /*
+    SSM集成开发依赖包
+    */
+    //mybatis/spring包
+    compile 'org.mybatis:mybatis-spring:1.2.3'
+    //mybatis核心包
+    compile 'org.mybatis:mybatis:3.3.0'
+    compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+    compile 'org.springframework:spring-test:4.0.5.RELEASE'
+    compile 'org.mybatis:mybatis:3.3.0'
+    //日志文件管理包
+    compile 'log4j:log4j:1.2.17'
+    //解决slf4j与log4j冲突
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+    //格式化对象，方便输出日志
+    compile 'com.alibaba:fastjson:1.1.41'
+    //导入dbcp的jar包，用来在applicationContext.xml中配置数据库
+    compile 'commons-dbcp:commons-dbcp:1.2.2'
+    //使用json相关方法，需要引入json jar包
+    compile "net.sf.json-lib:json-lib:2.3:jdk15"
+    //对象转换成json格式
+    compile 'org.codehaus.jackson:jackson-core-asl:1.9.12'
+    compile group: 'org.codehaus.jackson', name: 'jackson-mapper-asl', version: '1.9.12'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.8.3'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
+    //servlet
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+
+    //使用spring-Data-Redis封装的TokenManager对Token进行基础操作
+    compile group: 'org.springframework.data', name: 'spring-data-redis', version: '1.8.3.RELEASE'
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+}
