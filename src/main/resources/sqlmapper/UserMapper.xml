@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  	        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.snkey.core.dao.UserDao">
+
+   <!-- 配置列和属性之间的映射 -->
+   <!-- 一对一映射 property：指定当前类中的属性名 javaType：属性的类型 -->
+ <!--  <resultMap type="User" id="userMap">
+       <id column="id" property="id" />
+       <result column="username" property="username" />
+        <result property="email" column="email"></result>
+        <result property="password" column="password"></result>
+        <result property="phone" column="phone"></result>
+        <result property="data_type" column="data_type"></result>
+        <result property="title" column="title"></result>
+        <result property="is_active" column="is_active"></result>
+    </resultMap>-->
+    <!-- resultMap:引用上面配置的resultMap的id
+     parameterType：参数类型
+    使用#{属性名}：参数类型是基本数据类型或String大括号中的名称可以自定义
+    insert元素：在此元素内写增加的sql语句
+ -->
+    <!--注册用户信息保存-->
+    <insert id="saveForRegister" parameterType="com.snkey.core.entity.User">
+        insert into users(id,username,email,password,is_developer,is_staff,is_active,is_superuser,date_joined,lastlogin,phone,img) values(#{id},#{username},#{email},#{password},#{is_developer},#{is_staff},#{is_active},#{is_superuser},#{date_joined},#{lastlogin},#{phone},#{img})
+   </insert>
+    <!--修改密码-->
+    <update id="updatePassword" parameterType="String">
+        update users
+        set password=#{password}
+        where id=#{id}
+    </update>
+    <!--根据用户ID查询用户信息-->
+    <select id="findById" parameterType="String" resultType="com.snkey.core.entity.User">
+        select * from users where id=#{id}
+    </select>
+   <!--查询所有用户 -->
+   <select id="findAll" resultType="com.snkey.core.entity.User">
+            select * from users
+   </select>
+    <!--根据用户id删除用户信息-->
+    <delete id="detele" parameterType="String">
+        delete from users where id=#{id}
+    </delete>
+    
+    <select id="login">
+        select * from users WHERE username=#{users.username} and password=#{users.password} ;
+    </select>
+</mapper>
