@@ -22,6 +22,10 @@ public class TokenModel implements Serializable {
     //随机生成的token
     private String tokenValue;
 
+    //登录客户端类型：WEB&APP
+    @JsonIgnore
+    private String clientCode;
+
     public TokenModel() {
     }
 
@@ -29,6 +33,21 @@ public class TokenModel implements Serializable {
         this.UUId = UUId;
         this.typeCode = typeCode;
         this.tokenValue = tokenValue;
+    }
+
+    public TokenModel(String UUId, String typeCode, String tokenValue, String clientCode) {
+        this.UUId = UUId;
+        this.typeCode = typeCode;
+        this.tokenValue = tokenValue;
+        this.clientCode = clientCode;
+    }
+
+    public String getClientCode() {
+        return clientCode;
+    }
+
+    public void setClientCode(String clientCode) {
+        this.clientCode = clientCode;
     }
 
     public String getUUId() {
@@ -61,6 +80,7 @@ public class TokenModel implements Serializable {
                 "UUId='" + UUId + '\'' +
                 ", typeCode='" + typeCode + '\'' +
                 ", tokenValue='" + tokenValue + '\'' +
+                ", clientCode='" + clientCode + '\'' +
                 '}';
     }
 }

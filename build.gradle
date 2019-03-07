@@ -2,6 +2,7 @@ group 'com.snkey.hiot'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'kotlin'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
@@ -60,4 +61,27 @@ dependencies {
     //spring-Data-Redis封装的TokenManager对Token进行基础操作
     compile group: 'org.springframework.data', name: 'spring-data-redis', version: '1.8.3.RELEASE'
     compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+}
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+/**
+ * 添加kotlin支持
+ */
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }

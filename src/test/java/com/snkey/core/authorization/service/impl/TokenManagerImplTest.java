@@ -3,6 +3,7 @@ package com.snkey.core.authorization.service.impl;
 import com.snkey.core.authorization.model.TokenModel;
 import com.snkey.core.authorization.service.TokenManager;
 import com.snkey.core.dao.UserDao;
+import com.snkey.core.utils.MD5Util;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.UUID;
-
-import static org.junit.Assert.*;
 
 
 /**
@@ -65,6 +64,10 @@ public class TokenManagerImplTest {
         String authorization = "9561f578-dd4e-4333-8ccc-8f64fb6e7819_user_ad19583a-a10a-46f5-9b25-4e236b693af7";
         TokenModel tokenModel = tokenManager.getToken(authorization);
         System.out.println(tokenModel);
+
+        //生成一个md5字符串
+        String activeCode = MD5Util.getMD5Str("561f578-dd4e-4333-8ccc-8f64fb6e7810");
+        System.out.println(activeCode);
     }
 
     @Test

@@ -9,6 +9,9 @@ import com.snkey.core.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Service层实现类
  *
@@ -51,6 +54,16 @@ public class IUserServiceImpl implements IUserService {
             return new Result(0, "username or password is error", null);
         }
         return new Result(1, "login success", user);
+    }
+
+    @Override
+    public boolean isPassword(String password) {
+        //正则表达式的模式，正则规划：密码、字母、数字下划线组成6-18位
+        Pattern pattern = Pattern.compile( "^[a-zA-Z]\\w{5,17}$");
+        //正则表达式的匹配器
+        Matcher m = pattern.matcher(password);
+        //进行正则匹配
+        return m.matches();
     }
 
 }

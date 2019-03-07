@@ -5,16 +5,17 @@ import java.io.Serializable;
 public class Result implements Serializable {
     private int status;
     private String msg;
-    private Object obj;
-
-    public Result(int status, String msg, Object obj) {
-        this.status = status;
-        this.msg = msg;
-        this.obj = obj;
-    }
+    private Object data;
 
     public Result() {
     }
+
+    public Result(int status, String msg, Object data) {
+        this.status = status;
+        this.msg = msg;
+        this.data = data;
+    }
+
 
     public int getStatus() {
         return status;
@@ -32,12 +33,12 @@ public class Result implements Serializable {
         this.msg = msg;
     }
 
-    public Object getObj() {
-        return obj;
+    public Object getData() {
+        return data;
     }
 
-    public void setObj(Object obj) {
-        this.obj = obj;
+    public void setData(Object data) {
+        this.data = data;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class Result implements Serializable {
         return "Result{" +
                 "status=" + status +
                 ", msg='" + msg + '\'' +
-                ", obj=" + obj +
+                ", data=" + data +
                 '}';
     }
 

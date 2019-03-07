@@ -71,7 +71,7 @@ public class TokenManagerImpl implements TokenManager {
             return false;
         }
         //如果验证成功，说明此用户（设备）进行了一次有效操作，延长token的过期时间
-        if(model.getTypeCode().equalsIgnoreCase(Constant.AUTHORIZATION_USER)){
+        if(model.getTypeCode().equalsIgnoreCase(Constant.AUTHORIZATION)){
             redis.boundValueOps(model.getUUId()).expire(Constant.TOKEN_EXPIRES_HOUR, TimeUnit.HOURS);
         }else if(model.getTypeCode().equalsIgnoreCase(Constant.AUTHORIZATION_DEVICE)){
             redis.boundValueOps(model.getUUId()).expire(Constant.TOKEN_EXPIRES_DAY, TimeUnit.DAYS);
@@ -80,18 +80,7 @@ public class TokenManagerImpl implements TokenManager {
     }
 
     /**
-     * 检验设备token是否有效
-     * @param tokenModel
-     * @return
-     */
-    @Override
-    public Result checkToken2(TokenModel tokenModel) {
-        //todo
-        return null;
-    }
-
-    /**
-     * 获取加密后的token中的信息
+     * 获取加密后的token中的信息，将其封装成一个TokenModel
      * @param authentication  authentication/tokenValue = UUId + "_" + value + "_" + typeCode;
      * @return
      */

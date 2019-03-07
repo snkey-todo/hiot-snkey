@@ -16,4 +16,6 @@ public interface IUserService {
 
     public Result login(User user);
 
+    public boolean isPassword(String email);
+
 }
